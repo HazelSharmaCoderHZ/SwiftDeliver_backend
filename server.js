@@ -24,7 +24,8 @@ async function initializeDB() {
     console.error("❌ DB Connection Error:", err);
   }
 }
-
+const cors = require("cors");
+app.use(cors());
 // 🔥 Call DB init
 initializeDB();
 app.use("/api/payments", require("./routes/paymentRoutes"));
@@ -48,6 +49,5 @@ app.get("/", (req, res) => {
   res.send("Backend is running 🚀");
 });
 
-app.listen(5000, () => {
-  console.log("Server running on port 5000");
-});
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => console.log(`Server running on ${PORT}`));
