@@ -27,7 +27,7 @@ async function initializeDB() {
 
 // 🔥 Call DB init
 initializeDB();
-
+app.use("/api/payments", require("./routes/paymentRoutes"));
 // ✅ Routes AFTER middleware
 const customerRoutes = require("./routes/customerRoutes");
 app.use("/customers", customerRoutes);
